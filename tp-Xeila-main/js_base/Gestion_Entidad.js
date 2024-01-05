@@ -182,21 +182,6 @@ class GestionEntidad {
             formulario = document.getElementById(formulario);
             datos = new FormData(formulario);
         }
-    
-        //todo
-        /*
-        formulario[1].value = "aaaaa";
-        formulario[2].value = "aaaaa";
-        formulario[3].value = "aaaaa";
-        formulario[4].value = "aaaaa";
-        formulario[5].value = "aaaaa";
-        formulario[6].value = "aaaaa";
-        formulario[7].value = "aaaaa";
-        formulario[8].value = "0000-00-00"; //FECHAAAA
-        formulario[9].value = "AAAAAAA";
-        formulario[10].value = "AAAAAAAA";
-        formulario[11].value = "AAAAAAAA";
-        */
 
         datos.append('controlador', controlador);
         datos.append('action', action);
@@ -219,9 +204,18 @@ class GestionEntidad {
             .done(res => {
                 resolve(res);
             })
-            .fail(res => {
-                alert('error : '+res.status);
-            })
+            
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                // Aquí puedes obtener más detalles sobre el error
+                console.error('Error en la solicitud:', textStatus, errorThrown);
+            
+                // Mostrar un alert con detalles del error
+                alert('Error en la solicitud:\n' +
+                    'Status: ' + jqXHR.status + '\n' +
+                    'Status Text: ' + jqXHR.statusText + '\n' +
+                    'Response Text: ' + jqXHR.responseText);
+            });
+
     
         });
     
