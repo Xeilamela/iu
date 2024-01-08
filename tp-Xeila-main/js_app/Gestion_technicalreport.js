@@ -69,45 +69,31 @@ class Gestion_technicalreport extends GestionEntidad{
     static createForm_EDIT(datostupla){
         
         // resetear el formulario
-        this.recargarform();
-        /*
+        this.recargarform_search();
+        
         // rellenar titulo formulario
-        document.querySelector(".class_contenido_titulo_form").className = "class_contenido_titulo_form titulo_form_EDIT_persona"; 
+        document.querySelector(".class_contenido_titulo_form").className = "class_contenido_titulo_form titulo_form_EDIT_technicalreport"; 
 
         // se rellena el action del formulario
-        document.getElementById('IU_form').action = 'javascript:Gestion_libros.EDIT();';
-        document.getElementById('IU_form').setAttribute('onsubmit', 'return Gestion_libros.comprobar_submit();');
+        document.getElementById('IU_form').action = 'javascript:Gestion_technicalreport.EDIT();';
+        document.getElementById('IU_form').setAttribute('onsubmit', 'return Gestion_technicalreport.comprobar_submit();');
 
-        // se coloca el onblur del dni y se pone a vacio el valor (o podriamos hacerlo en el resetearformusuario())
-        document.getElementById('cod').setAttribute('onblur', 'Gestion_libros.comprobar_dni()');
-        document.getElementById('cod').value = datostupla.CodigoL;
-        document.getElementById('cod').setAttribute("readonly","");
+  // se rellena el action del formulario
+  document.getElementById('IU_form').action = 'javascript:Gestion_technicalreport.DELETE();';
+        
+  document.getElementById('CodigoTR').value = datostupla.CodigoTR;
 
-        // se coloca el onblur del nombre y se pone a vacio el valor (o podriamos hacerlo en el resetearformusuario())
-        document.getElementById('nombre_persona').setAttribute('onblur', 'Gestion_libros.comprobar_nombre_persona()');
-        document.getElementById('nombre_persona').value = datostupla.nombre_persona;
+  document.getElementById('AutoresTR').value = datostupla.AutoresTR;
+  
+  document.getElementById('TituloTR').value = datostupla.TituloTR;
 
-        document.getElementById('apellidos_persona').setAttribute('onblur', 'Gestion_libros.comprobar_apellidos_persona()');
-        document.getElementById('apellidos_persona').value = datostupla.apellidos_persona;
+  document.getElementById('DepartamentoTR').value = datostupla.DepartamentoTR;
 
-        document.getElementById('fechaNacimiento_persona').setAttribute('onchange','Gestion_libros.comprobar_fechaNacimiento_persona()');
-        document.getElementById('fechaNacimiento_persona').value = datostupla.fechaNacimiento_persona;
+  document.getElementById('UniversidadTR').value = datostupla.UniversidadTR;
 
-        document.getElementById('direccion_persona').setAttribute('onblur','Gestion_libros.comprobar_direccion_persona()');
-        document.getElementById('direccion_persona').value = datostupla.direccion_persona;
+  document.getElementById('FechaTR').value = datostupla.FechaTR;
 
-        document.getElementById('telefono_persona').setAttribute('onblur','Gestion_libros.comprobar_telefono_persona()');
-        document.getElementById('telefono_persona').value = datostupla.telefono_persona;
 
-        document.getElementById('email_persona').setAttribute('onblur','Gestion_libros.comprobar_email_persona()');
-        document.getElementById('email_persona').value = datostupla.email_persona;
-
-        document.getElementById('foto_persona').value = datostupla.foto_persona;
-        document.getElementById('link_foto_persona').setAttribute('href','http://193.147.87.202/ET2/filesuploaded/files_foto_persona/'+foto_persona);
-        document.getElementById('foto_persona').setAttribute("readonly",true);
-
-        document.getElementById('nuevo_foto_persona').setAttribute('onblur','Gestion_libros.comprobar_nuevo_foto_persona()');
-        */
 
         let botonedit = document.createElement('button');
         botonedit.type = 'submit';
@@ -125,47 +111,40 @@ class Gestion_technicalreport extends GestionEntidad{
 
     static createForm_DELETE(datostupla){
         
+        
         // resetear el formulario
-        this.recargarform();
+        this.recargarform_search();
 
-        /*
         // rellenar titulo formulario
-        document.querySelector(".class_contenido_titulo_form").className = "class_contenido_titulo_form titulo_form_DELETE_persona";
+        document.querySelector(".class_contenido_titulo_form").className = "class_contenido_titulo_form titulo_form_DELETE_technicalreport";
 
-        
         // se rellena el action del formulario
-        document.getElementById('IU_form').action = 'javascript:Gestion_libros.DELETE();';
-
-        // se coloca el onblur del dni y se pone a vacio el valor (o podriamos hacerlo en el resetearformusuario())
-        document.getElementById('cod').value = datostupla.dni;
-        document.getElementById('cod').setAttribute('readonly',true);
-
-        // se coloca el onblur del nombre y se pone a vacio el valor (o podriamos hacerlo en el resetearformusuario())
-        document.getElementById('nombre_persona').value = datostupla.nombre_persona;
-        document.getElementById('nombre_persona').setAttribute('readonly',true);
-
-        document.getElementById('apellidos_persona').value = datostupla.apellidos_persona;
-        document.getElementById('apellidos_persona').setAttribute('readonly',true);
-
-        document.getElementById('fechaNacimiento_persona').value = datostupla.fechaNacimiento_persona;
-        document.getElementById('fechaNacimiento_persona').setAttribute('readonly',true);
-
-        document.getElementById('direccion_persona').value = datostupla.direccion_persona;
-        document.getElementById('direccion_persona').setAttribute('readonly',true);
-
-        document.getElementById('telefono_persona').value = datostupla.telefono_persona;
-        document.getElementById('telefono_persona').setAttribute('readonly',true);
-
-        document.getElementById('email_persona').value = datostupla.email_persona;
-        document.getElementById('email_persona').setAttribute('readonly',true);
-
-        document.getElementById('foto_persona').value = datostupla.foto_persona;
-        document.getElementById('foto_persona').setAttribute("readonly",true);
-        document.getElementById("link_foto_persona").href += datostupla.foto_persona;
-
-        document.getElementById("label_nuevo_foto_persona").style.display = 'none';
-        document.getElementById("nuevo_foto_persona").style.display = 'none';
+        document.getElementById('IU_form').action = 'javascript:Gestion_technicalreport.DELETE();';
         
+        document.getElementById('CodigoTR').value = datostupla.CodigoTR;
+        document.getElementById('CodigoTR').setAttribute('readonly',true); 
+
+        document.getElementById('AutoresTR').value = datostupla.AutoresTR;
+        document.getElementById('AutoresTR').setAttribute('readonly',true);
+                
+        document.getElementById('TituloTR').value = datostupla.TituloTR;
+        document.getElementById('TituloTR').setAttribute('readonly',true); 
+
+        document.getElementById('DepartamentoTR').value = datostupla.DepartamentoTR;
+        document.getElementById('DepartamentoTR').setAttribute('readonly',true); 
+
+        document.getElementById('UniversidadTR').value = datostupla.UniversidadTR;
+        document.getElementById('UniversidadTR').setAttribute('readonly',true); 
+
+         
+        document.getElementById('FicheropdfTR').value = datostupla.FicheropdfTR;
+        document.getElementById('FicheropdfTR').setAttribute('readonly',true); 
+        
+
+        document.getElementById('FechaTR').value = datostupla.FechaTR;
+        document.getElementById('FechaTR').setAttribute('readonly',true); 
+        
+       
 
         let botondelete = document.createElement('button');
         botondelete.id = 'botondelete';
@@ -180,17 +159,14 @@ class Gestion_technicalreport extends GestionEntidad{
 
         // se muestra el formulario
         document.getElementById('div_IU_form').style.display = 'block';
-        */
     }
 
     static createForm_SHOWCURRENT(datostupla){
         
+        debugger;
         // reutilizo la creación del delete porque me implica pocas modificaciones
         this.createForm_DELETE(datostupla);
-        /*
-        // rellenar titulo del formulario
-        document.querySelector(".class_contenido_titulo_form").className = "class_contenido_titulo_form titulo_form_SHOWCURRENT_persona";
-
+        
         // eliminar boton delete del form DELETE
         document.getElementById('botondelete').remove();
         
@@ -202,7 +178,6 @@ class Gestion_technicalreport extends GestionEntidad{
 
         // para actualizar el idioma
         setLang();
-        */
 
     }
 
@@ -522,8 +497,27 @@ class Gestion_technicalreport extends GestionEntidad{
  
      }
      static comprobar_FechaTR(){
+        if (validacionesatomicas.size_minimo('FechaTR',10)){
+        }
+        else{
+            //modificacion parametros texto error
+            DOM_class.mostrardivmensajeserrordebajo('FechaTR','KO_FechaTR_tam_min');
+            //salir ejecucion con false
+            return false;
+        }
+
+        if (validacionesatomicas.fecha_mayor_hoy('FechaTR')){
+        }
+        else{
+            //modificacion parametros texto error
+            DOM_class.mostrardivmensajeserrordebajo('FechaTR','KO_FechaTR_mayor_hoy');
+            //salir ejecucion con false
+            return false;
+        }
+
+
         DOM_class.mostrarexitovalor('FechaTR');
-        return true;                 
+        return true;               
     }
     static recargarform(){
 
@@ -554,7 +548,8 @@ class Gestion_technicalreport extends GestionEntidad{
         
         <br>
              
-       
+        <a id="link_foto_persona" href="http://193.147.87.202/ET2/filesuploaded/files_foto_persona/"><img src="./iconos/FILE.png" /></a>
+        <label id="label_nuevo_foto_persona" class="label_nuevo_foto_persona">Nueva Foto Persona</label>
         <input type='file' id='FicheropdfTR' name='FicheropdfTR'></input>
         <div id="div_error_FicheropdfTR" class="errorcampo"><a id="error_FicheropdfTR"></a></div>
         <br>
@@ -610,12 +605,8 @@ class Gestion_technicalreport extends GestionEntidad{
         <div id="div_error_UniversidadTR" class="errorcampo"><a id="error_UniversidadTR"></a></div>
         
         <br>
-             
-       
-        <input type='file' id='FicheropdfTR' name='FicheropdfTR'></input>
-        <div id="div_error_FicheropdfTR" class="errorcampo"><a id="error_FicheropdfTR"></a></div>
-        <br>
-        
+      
+      
         <label class="label_FechaTR"></label>
         <input type='date' id='FechaTR' name='FechaTR'></input>
         <div id="div_error_FechaTR" class="errorcampo"><a id="error_FechaTR"></a></div>        
