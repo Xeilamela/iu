@@ -30,7 +30,11 @@ class Gestion_technicalreport extends GestionEntidad{
 
         document.getElementById('UniversidadTR').setAttribute('onblur','Gestion_technicalreport.comprobar_UniversidadTR()');
 
-        //document.getElementById('FicheropdfTR').setAttribute('onblur','Gestion_technicalreport.comprobar_FicheropdfTR()');
+        document.getElementById('nuevo_FicheropdfTR').setAttribute('onblur', 'Gestion_technicalreport.comprobar_FicheropdfTR()');
+        document.getElementById("label_FicheropdfTR").style.display = 'none';
+        document.getElementById("FicheropdfTR").style.display = 'none';
+        document.getElementById("link_FicheropdfTR").style.display = 'none';
+
 
         document.getElementById('FechaTR').setAttribute('onblur','Gestion_technicalreport.comprobar_FechaTR()');
 
@@ -44,17 +48,6 @@ class Gestion_technicalreport extends GestionEntidad{
         botonadd.append(imgadd);
 
         const form = document.getElementById('IU_form')
-
-        /*
-        form.addEventListener("submit", function(e) {
-            //e.preventDefault();
-            let data = new FormData(form);
-            for (let [name,value] of data) {
-              value = "aaaaaaa"
-                //console.log(name, ":", value)
-            }
-          })
-        */
 
         document.getElementById('IU_form').append(botonadd);        
 
@@ -77,23 +70,31 @@ class Gestion_technicalreport extends GestionEntidad{
         // se rellena el action del formulario
         document.getElementById('IU_form').action = 'javascript:Gestion_technicalreport.EDIT();';
         document.getElementById('IU_form').setAttribute('onsubmit', 'return Gestion_technicalreport.comprobar_submit();');
+                
+        document.getElementById('CodigoTR').value = datostupla.CodigoTR;
 
-  // se rellena el action del formulario
-  document.getElementById('IU_form').action = 'javascript:Gestion_technicalreport.DELETE();';
+        document.getElementById('AutoresTR').value = datostupla.AutoresTR;
         
-  document.getElementById('CodigoTR').value = datostupla.CodigoTR;
+        document.getElementById('TituloTR').value = datostupla.TituloTR;
 
-  document.getElementById('AutoresTR').value = datostupla.AutoresTR;
-  
-  document.getElementById('TituloTR').value = datostupla.TituloTR;
+        document.getElementById('DepartamentoTR').value = datostupla.DepartamentoTR;
 
-  document.getElementById('DepartamentoTR').value = datostupla.DepartamentoTR;
+        document.getElementById('UniversidadTR').value = datostupla.UniversidadTR;
 
-  document.getElementById('UniversidadTR').value = datostupla.UniversidadTR;
+        document.getElementById('FechaTR').value = datostupla.FechaTR;
 
-  document.getElementById('FechaTR').value = datostupla.FechaTR;
-
-
+        if(datostupla.FicheropdfTR && datostupla.FicheropdfTR !="")
+        {
+            document.getElementById("link_FicheropdfTR").href += datostupla.FicheropdfTR
+            document.getElementById("FicheropdfTR").value = datostupla.FicheropdfTR
+            document.getElementById("FicheropdfTR").setAttribute("readonly",true)
+        }
+        else
+        {
+            document.getElementById("FicheropdfTR").style.display = 'none';
+            document.getElementById("label_FicheropdfTR").style.display = 'none';
+            document.getElementById("FicheropdfTR").style.display = 'none';
+        }
 
         let botonedit = document.createElement('button');
         botonedit.type = 'submit';
@@ -111,7 +112,7 @@ class Gestion_technicalreport extends GestionEntidad{
 
     static createForm_DELETE(datostupla){
         
-        
+        debugger;
         // resetear el formulario
         this.recargarform_search();
 
@@ -135,16 +136,27 @@ class Gestion_technicalreport extends GestionEntidad{
 
         document.getElementById('UniversidadTR').value = datostupla.UniversidadTR;
         document.getElementById('UniversidadTR').setAttribute('readonly',true); 
-
          
         document.getElementById('FicheropdfTR').value = datostupla.FicheropdfTR;
         document.getElementById('FicheropdfTR').setAttribute('readonly',true); 
-        
+        document.getElementById("label_nuevo_FicheropdfTR").style.display = 'none';
+        document.getElementById("nuevo_FicheropdfTR").style.display = 'none';
 
         document.getElementById('FechaTR').value = datostupla.FechaTR;
         document.getElementById('FechaTR').setAttribute('readonly',true); 
-        
-       
+
+        if(datostupla.FicheropdfTR && datostupla.FicheropdfTR !="")
+        {
+            document.getElementById("link_FicheropdfTR").href += datostupla.FicheropdfTR
+            document.getElementById("FicheropdfTR").value = datostupla.FicheropdfTR
+            document.getElementById("FicheropdfTR").setAttribute("readonly",true)
+        }
+        else
+        {
+            document.getElementById("FicheropdfTR").style.display = 'none';
+            document.getElementById("label_FicheropdfTR").style.display = 'none';
+            document.getElementById("FicheropdfTR").style.display = 'none';
+        }
 
         let botondelete = document.createElement('button');
         botondelete.id = 'botondelete';
@@ -176,6 +188,8 @@ class Gestion_technicalreport extends GestionEntidad{
         imgshowcurrent.setAttribute("onclick","DOM_class.cerrar_div_formulario();")
         document.getElementById('IU_form').append(imgshowcurrent);
 
+        
+
         // para actualizar el idioma
         setLang();
 
@@ -197,15 +211,14 @@ class Gestion_technicalreport extends GestionEntidad{
       
         // se coloca el onblur del autor y se pone a vacio el valor (o podriamos hacerlo en el resetearformusuario())
         document.getElementById('AutoresTR').setAttribute('onblur', 'Gestion_technicalreport.comprobar_AutoresTR_search()');
-
-          
+  
         document.getElementById('TituloTR').setAttribute('onblur', 'Gestion_technicalreport.comprobar_TituloTR_search()');
                 
         document.getElementById('DepartamentoTR').setAttribute('onblur', 'Gestion_technicalreport.comprobar_DepartamentoTR_search()');
 
         document.getElementById('UniversidadTR').setAttribute('onblur','Gestion_technicalreport.comprobar_UniversidadTR_search()');
 
-      //  document.getElementById('FicheropdfTR').setAttribute('onblur','Gestion_technicalreport.comprobar_ficheropdf_technicalreport_search()');
+        document.getElementById('FicheropdfTR').setAttribute('onblur','Gestion_technicalreport.comprobar_ficheropdf_technicalreport_search()');
 
         document.getElementById('FechaTR').setAttribute('onblur','Gestion_technicalreport.comprobar_FechaTR_search()');
 
@@ -235,7 +248,7 @@ class Gestion_technicalreport extends GestionEntidad{
         let valor1 = this.comprobar_TituloTR();
         let valor2 = this.comprobar_DepartamentoTR();
         let valor3 = this.comprobar_UniversidadTR();
-       // let valor4 = this.comprobar_FicheropdfTR();
+        let valor4 = this.comprobar_FicheropdfTR();
         let valor5 = this.comprobar_FechaTR();
     
         let resultado = (
@@ -243,6 +256,7 @@ class Gestion_technicalreport extends GestionEntidad{
             valor1 &&
             valor2 &&
             valor3 &&
+            valor4 &&
             valor5 
         );
         
@@ -259,7 +273,7 @@ class Gestion_technicalreport extends GestionEntidad{
         let valor2 = this.comprobar_TituloTR_search();
         let valor3 = this.comprobar_DepartamentoTR_search();
         let valor4 = this.comprobar_UniversidadTR_search();
-       // let valor5 = this.comprobar_FicheropdfTR_search();
+        let valor5 = this.comprobar_FicheropdfTR_search();
         let valor6 = this.comprobar_FechaTR_search();
      
         
@@ -270,6 +284,7 @@ class Gestion_technicalreport extends GestionEntidad{
             valor2 &&
             valor3 &&
             valor4 &&
+            valor5 &&
             valor6 
         );
         
@@ -400,6 +415,42 @@ class Gestion_technicalreport extends GestionEntidad{
         DOM_class.mostrarexitovalor('FechaTR');
         return true;
     }
+
+    static comprobar_FicheropdfTR() {
+        debugger;
+        if (validacionesatomicas.nombre_min('nuevo_FicheropdfTR', 4)) {
+        }
+        else 
+        {
+            DOM_class.mostrardivmensajeserrordebajo('nuevo_FicheropdfTR', 'KO_FicheropdfTR_min')
+            return false;
+        }
+
+        if (validacionesatomicas.termina_con('nuevo_FicheropdfTR', '.pdf')) { }
+        else {
+            DOM_class.mostrardivmensajeserrordebajo('nuevo_FicheropdfTR', 'KO_FicheropdfTR_extension')
+            return false;
+        }
+
+        if (validacionesatomicas.nombre_max('nuevo_FicheropdfTR', 20)) { }
+        else {
+            //modificacion parametros texto error
+            DOM_class.mostrardivmensajeserrordebajo('nuevo_FicheropdfTR', 'KO_FicheropdfTR_max');
+            //salir ejecucion con false
+            return false;
+        }
+        if (validacionesatomicas.file_size_maximo('nuevo_FicheropdfTR', 200000)) { }
+        else {
+            //modificacion parametros texto error
+            DOM_class.mostrardivmensajeserrordebajo('nuevo_FicheropdfTR', 'KO_FicheropdfTR_tam_max');
+            //salir ejecucion con false
+            return false;
+        }
+        DOM_class.mostrarexitovalor('nuevo_FicheropdfTR');
+        return true;
+    }
+
+
     static comprobar_AutoresTR(){
 
         if (validacionesatomicas.size_minimo('AutoresTR',6)){
@@ -547,13 +598,16 @@ class Gestion_technicalreport extends GestionEntidad{
         <div id="div_error_UniversidadTR" class="errorcampo"><a id="error_UniversidadTR"></a></div>
         
         <br>
-             
-        <a id="link_foto_persona" href="http://193.147.87.202/ET2/filesuploaded/files_foto_persona/"><img src="./iconos/FILE.png" /></a>
-        <label id="label_nuevo_foto_persona" class="label_nuevo_foto_persona">Nueva Foto Persona</label>
-        <input type='file' id='FicheropdfTR' name='FicheropdfTR'></input>
-        <div id="div_error_FicheropdfTR" class="errorcampo"><a id="error_FicheropdfTR"></a></div>
-        <br>
+
+        <label id="label_FicheropdfTR" class="label_FicheropdfTR">Archivo PDF</label>
+        <input type='text' id='FicheropdfTR' name='FicheropdfTR'></input>
+        <a id="link_FicheropdfTR" href="http://193.147.87.202/ET2/filesuploaded/files_FicheropdfTR/"><img src="./iconos/FILE.png" /></a>
+        <label id="label_nuevo_FicheropdfTR" class="label_nuevo_FicheropdfTRL">Nuevo Archivo PDF</label>
+        <input type='file' id='nuevo_FicheropdfTR' name='nuevo_FicheropdfTR' accept='application/pdf'></input>
+        <div id="div_error_nuevo_FicheropdfTR" class="errorcampo"><a id="error_nuevo_FicheropdfTR"></a></div>
         
+        <br>
+
         <label class="label_FechaTR"></label>
         <input type='date' id='FechaTR' name='FechaTR'></input>
         <div id="div_error_FechaTR" class="errorcampo"><a id="error_FechaTR"></a></div>        
@@ -605,11 +659,20 @@ class Gestion_technicalreport extends GestionEntidad{
         <div id="div_error_UniversidadTR" class="errorcampo"><a id="error_UniversidadTR"></a></div>
         
         <br>
-      
-      
+            
         <label class="label_FechaTR"></label>
         <input type='date' id='FechaTR' name='FechaTR'></input>
         <div id="div_error_FechaTR" class="errorcampo"><a id="error_FechaTR"></a></div>        
+        
+        <br>
+
+        <label id="label_FicheropdfTR" class="label_FicheropdfTR">Archivo PDF</label>
+        <input type='text' id='FicheropdfTR' name='FicheropdfTR'></input>
+        <a id="link_FicheropdfTR" href="http://193.147.87.202/ET2/filesuploaded/files_FicheropdfTR/"><img src="./iconos/FILE.png" /></a>
+        <label id="label_nuevo_FicheropdfTR" class="label_nuevo_FicheropdfTRL">Nuevo Archivo PDF</label>
+        <input type='file' id='nuevo_FicheropdfTR' name='nuevo_FicheropdfTR' accept='application/pdf'></input>
+        <div id="div_error_nuevo_FicheropdfTR" class="errorcampo"><a id="error_nuevo_FicheropdfTR"></a></div>
+
 
         <br>  
         `;

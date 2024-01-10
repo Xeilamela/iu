@@ -113,6 +113,10 @@ let textos_ES={
  "KO_FechaTR_tam_min":"Fecha Technicalreport peta minimo",
  "KO_FechaTR_mayor_hoy": "Fecha mayor al día de hoy",
 
+ "KO_FicheropdfTR_min":"nombre peta mínimo",
+ "KO_FicheropdfTR_max":"nombre peta máximo",
+ "KO_FicheropdfTR_extension":"Extensión incorrecta",
+ "KO_FicheropdfTR_tam_max":"supera el tamaño",
  
     // nombre_autor
     "KO_autor_libro_tam_min":"nombre autor peta minimo",

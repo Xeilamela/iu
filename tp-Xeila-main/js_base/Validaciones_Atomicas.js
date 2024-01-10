@@ -51,5 +51,42 @@ class validacionesatomicas{
             return true;
         }  
     }   
+
+    static termina_con(id, sufijo) {
+        if (document.getElementById(id).value.endsWith(sufijo)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    //ruta
+    static nombre_max(id, max) {
+        if (document.getElementById(id).value.split(/(\\|\/)/g).pop().length < max) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    //ruta
+    static nombre_min(id, min) {
+        if (document.getElementById(id).value.split(/(\\|\/)/g).pop().length > min) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     
+    static file_size_maximo(id, valormaximo) {
+        if (document.getElementById(id).files?.[0].size > valormaximo) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 }
